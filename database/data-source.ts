@@ -10,5 +10,5 @@ export const dataSourceOptions: TypeOrmModuleOptions = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE_NAME,
   entities: [Book],
-  synchronize: true // only for dev
+  synchronize: false // only for dev
 }
