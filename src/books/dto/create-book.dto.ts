@@ -12,4 +12,7 @@ export class CreateBookDto {
   @IsNumber()
   @IsNotEmpty()
   pages: number
+
+  @IsString()
+  image: string
 }

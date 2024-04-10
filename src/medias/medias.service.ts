@@ -3,11 +3,15 @@ import * as fs from 'fs'
 
 @Injectable()
 export class MediasService {
-  async uploadImage(file: Express.Multer.File) {
-    return file.path
+  uploadImage(file: Express.Multer.File) {
+    return this.base64_encode(file.path)
   }
 
-  async deleteImage(uri: string) {
+  base64_encode(path: string) {
+    return fs.readFileSync(path, 'base64')
+  }
+
+  deleteImage(uri: string) {
     fs.unlink(uri, (err) => {
       if (err) throw err
     })

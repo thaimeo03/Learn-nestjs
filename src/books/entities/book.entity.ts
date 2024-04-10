@@ -15,6 +15,7 @@ export class Book {
   pages: number
 
   @Column({
+    type: 'longtext',
     nullable: true
   })
   image: string

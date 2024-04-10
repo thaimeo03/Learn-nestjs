@@ -9,8 +9,15 @@ export class MediasController {
 
   @Post('upload-image')
   @UseInterceptors(FileInterceptor('image', new MulterConfigService('images').createMulterOptions()))
-  uploadImageFile(@UploadedFile() file: Express.Multer.File) {
-    return this.mediasService.uploadImage(file)
+  async uploadImageFile(@UploadedFile() file: Express.Multer.File) {
+    const base64 = this.mediasService.uploadImage(file)
+
+    return {
+      message: 'Upload image successfully',
+      data: {
+        base64: base64
+      }
+    }
   }
 
   @Delete('image/:uri')
